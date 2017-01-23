@@ -8,6 +8,7 @@
 
 import Cocoa
 import FileWatch
+import Async
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -19,9 +20,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menu: NSMenu = NSMenu()
     let textItem : NSMenuItem = NSMenuItem()
     var fileWatch : FileWatch? = nil
+    
+    var importerCount : Int = 0
+    let importerAsync = Async.background {
+        
+    }
 
     func setWindowVisible(sender: AnyObject){
         self.window!.makeKeyAndOrderFront(sender)
+    }
+    
+    func updateTextItem() {
+        if self.importerCount > 0 {
+            textItem.title = String(format:"Importing %d photos into Photos.app...", self.importerCount)
+        }
+        else {
+            textItem.title = "Waiting for new Camera Uploads photos..."
+        }
+    }
+    
+    func incUploadingCount() {
+        self.importerCount += 1
+        updateTextItem()
+    }
+    
+    
+    func decUploadingCount() {
+        self.importerCount -= 1
+        updateTextItem()
     }
     
     override func awakeFromNib() {
@@ -29,6 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if detectFirstRun() {
             firstRun()
         }
+
         
         statusBarItem = statusBar.statusItem(withLength: -1)
         statusBarItem.menu = menu
@@ -54,7 +81,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
  
             if event.flag.contains(.ItemIsFile) {
                 if NSString(string: event.path).lastPathComponent != ".DS_Store" {
-                    self.attemptImport(path: event.path)
+                    
+                    self.importerAsync.main() {
+                        self.incUploadingCount()
+                    }.background() {
+                        self.attemptImport(path: event.path)
+                    }
+                    .main() {
+                        self.decUploadingCount()
+                    }
                 }
             }
         })

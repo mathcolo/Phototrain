@@ -13,6 +13,8 @@
 		654B85FF1E1C52250007B7E3 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 654B85FE1E1C52250007B7E3 /* Cartfile */; };
 		654B86011E1C52880007B7E3 /* FileWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654B86001E1C52880007B7E3 /* FileWatch.framework */; };
 		654B86021E1C52880007B7E3 /* FileWatch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654B86001E1C52880007B7E3 /* FileWatch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65AD07761E35B20F00698A6D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD07751E35B20F00698A6D /* Async.framework */; };
+		65AD07771E35B20F00698A6D /* Async.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65AD07751E35B20F00698A6D /* Async.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +25,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				654B86021E1C52880007B7E3 /* FileWatch.framework in Embed Frameworks */,
+				65AD07771E35B20F00698A6D /* Async.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +40,7 @@
 		654B85F61E1C4CDD0007B7E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		654B85FE1E1C52250007B7E3 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		654B86001E1C52880007B7E3 /* FileWatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileWatch.framework; path = Phototrain/Carthage/Build/Mac/FileWatch.framework; sourceTree = "<group>"; };
+		65AD07751E35B20F00698A6D /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Phototrain/Carthage/Build/Mac/Async.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				654B86011E1C52880007B7E3 /* FileWatch.framework in Frameworks */,
+				65AD07761E35B20F00698A6D /* Async.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +59,7 @@
 		654B85E31E1C4CDD0007B7E3 = {
 			isa = PBXGroup;
 			children = (
+				65AD07751E35B20F00698A6D /* Async.framework */,
 				654B86001E1C52880007B7E3 /* FileWatch.framework */,
 				654B85EE1E1C4CDD0007B7E3 /* Phototrain */,
 				654B85ED1E1C4CDD0007B7E3 /* Products */,
@@ -314,6 +320,7 @@
 				654B85FB1E1C4CDD0007B7E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
